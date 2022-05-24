@@ -18,11 +18,14 @@ import collections
 import os
 import random
 import json
+import sys
 from copy import deepcopy
 
 import ConfigSpace
 import numpy as np
 
+path = '/home/student/pedram-local/nas_benchmarks'
+sys.path.append(path)
 
 from tabular_benchmarks import FCNetProteinStructureBenchmark, FCNetSliceLocalizationBenchmark,\
     FCNetNavalPropulsionBenchmark, FCNetParkinsonsTelemonitoringBenchmark

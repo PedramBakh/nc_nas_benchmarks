@@ -2,8 +2,12 @@ import argparse
 import json
 import logging
 import os
+import sys
 
 import ConfigSpace
+
+path = '/home/student/pedram-local/nas_benchmarks'
+sys.path.append(path)
 
 logging.basicConfig(level=logging.ERROR)
 
@@ -131,12 +135,13 @@ for i in range(num_workers):
     w.run(background=True)
     workers.append(w)
 
+# optimization_strategy=args.strategy
 bohb = BOHB(configspace=cs,
             run_id=hb_run_id,
             eta=3, min_budget=min_budget, max_budget=max_budget,
             nameserver=ns_host,
             nameserver_port=ns_port,
-            optimization_strategy=args.strategy, num_samples=args.num_samples,
+            num_samples=args.num_samples,
             random_fraction=args.random_fraction, bandwidth_factor=args.bandwidth_factor,
             ping_interval=10, min_bandwidth=args.min_bandwidth)
 

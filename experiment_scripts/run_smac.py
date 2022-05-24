@@ -1,6 +1,10 @@
 import argparse
 import json
 import os
+import sys
+
+path = '/home/student/pedram-local/nas_benchmarks'
+sys.path.append(path)
 
 from smac.facade.smac_facade import SMAC
 from smac.scenario.scenario import Scenario
@@ -60,7 +64,6 @@ scenario = Scenario({"run_obj": "quality",
 def objective_function(config, **kwargs):
     y, c = b.objective_function(config)
     return float(y)
-
 
 tae = ExecuteTAFuncDict(objective_function, use_pynisher=False)
 smac = SMAC(scenario=scenario, tae_runner=tae)

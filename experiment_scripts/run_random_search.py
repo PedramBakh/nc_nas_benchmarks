@@ -1,6 +1,12 @@
 import os
 import json
 import argparse
+import sys
+
+path = '/home/student/pedram-local/nas_benchmarks'
+sys.path.append(path)
+
+
 
 from tabular_benchmarks import FCNetProteinStructureBenchmark, FCNetSliceLocalizationBenchmark,\
     FCNetNavalPropulsionBenchmark, FCNetParkinsonsTelemonitoringBenchmark

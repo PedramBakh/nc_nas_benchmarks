@@ -3,6 +3,10 @@ from copy import deepcopy
 import json
 import ConfigSpace
 import argparse
+import sys
+
+path = '/home/student/pedram-local/nas_benchmarks'
+sys.path.append(path)
 
 from hyperopt import fmin, tpe, hp, STATUS_OK, Trials
 

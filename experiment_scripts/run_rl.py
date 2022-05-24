@@ -21,6 +21,8 @@ import ConfigSpace
 import tensorflow as tf
 import tensorflow_probability as tfp
 
+
+
 from tabular_benchmarks import FCNetProteinStructureBenchmark, FCNetSliceLocalizationBenchmark,\
     FCNetNavalPropulsionBenchmark, FCNetParkinsonsTelemonitoringBenchmark
 from tabular_benchmarks import NASCifar10A, NASCifar10B
@@ -223,8 +225,8 @@ output_path = os.path.join(args.output_path, "rl")
 os.makedirs(os.path.join(output_path), exist_ok=True)
 
 # Eager mode used for RL baseline
-tf.enable_eager_execution()
-tf.enable_resource_variables()
+#tf.enable_eager_execution()
+#tf.enable_resource_variables()
 
 nb_reward = Reward(b)
 

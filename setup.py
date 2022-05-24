@@ -9,9 +9,9 @@ requires = [
     'ConfigSpace',
     'pandas',  # missing dependency of nasbench
 ]
-non_pypi_requires = [
-    'git+https://github.com/google-research/nasbench.git@master#egg=nasbench' 
-]
+#non_pypi_requires = [
+#    'git+https://github.com/google-research/nasbench.git@master#egg=nasbench'
+#]
 
 setup(name='nas_benchmarks',
       version='0.0.1',
@@ -21,5 +21,5 @@ setup(name='nas_benchmarks',
       keywords='hyperparameter optimization',
       packages=find_packages(),
       install_requires=requires,
-      dependency_links=non_pypi_requires,
+      #dependency_links=non_pypi_requires,
      )

@@ -3,7 +3,11 @@ import ConfigSpace
 import json
 import argparse
 import logging
+import sys
 logging.basicConfig(level=logging.ERROR)
+
+path = '/home/student/pedram-local/nas_benchmarks'
+sys.path.append(path)
 
 from hpbandster.optimizers.hyperband import HyperBand
 import hpbandster.core.nameserver as hpns

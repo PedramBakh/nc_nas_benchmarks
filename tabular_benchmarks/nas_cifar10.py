@@ -2,6 +2,15 @@ import os
 
 import ConfigSpace
 import numpy as np
+import sys
+
+#path = os.path.join(os.path.dirname(os.getcwd()), 'nc_carbontracker')
+path = '/home/student/pedram-local/nascar/vendors/nc_nasbench'
+path2 = '/home/student/pedram-local/nascar/vendors/nc_carbontracker'
+
+sys.path.append(path)
+sys.path.append(path2)
+
 from nasbench import api
 from nasbench.lib import graph_util
 
