@@ -4,15 +4,16 @@ import ConfigSpace
 import numpy as np
 import sys
 
-#path = os.path.join(os.path.dirname(os.getcwd()), 'nc_carbontracker')
-path = '/home/student/pedram-local/nascar/vendors/nc_nasbench'
-path2 = '/home/student/pedram-local/nascar/vendors/nc_carbontracker'
+# Add submodule to path
+path_nasbench = os.path.join(os.path.dirname(os.getcwd()), 'nc_nasbench')
+path_carbontracker = os.path.join(os.path.dirname(os.getcwd()), 'nc_carbontracker')
+sys.path.append(path_nasbench)
+sys.path.append(path_carbontracker)
 
-sys.path.append(path)
-sys.path.append(path2)
 
 from nasbench import api
 from nasbench.lib import graph_util
+
 
 MAX_EDGES = 9
 VERTICES = 7
@@ -124,6 +125,7 @@ class NASCifar10A(NASCifar10):
         labeling = [config["op_node_%d" % i] for i in range(5)]
         labeling = ['input'] + list(labeling) + ['output']
         model_spec = api.ModelSpec(matrix, labeling)
+        i = 0
         try:
            data = self.dataset.query(model_spec, epochs=budget)
         except api.OutOfDomainError:

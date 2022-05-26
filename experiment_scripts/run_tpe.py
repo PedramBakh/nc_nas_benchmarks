@@ -5,7 +5,8 @@ import ConfigSpace
 import argparse
 import sys
 
-path = '/home/student/pedram-local/nas_benchmarks'
+# Add submodule to path
+path = os.path.join(os.path.dirname(os.getcwd()))
 sys.path.append(path)
 
 from hyperopt import fmin, tpe, hp, STATUS_OK, Trials

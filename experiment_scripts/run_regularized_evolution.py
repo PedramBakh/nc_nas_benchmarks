@@ -24,7 +24,8 @@ from copy import deepcopy
 import ConfigSpace
 import numpy as np
 
-path = '/home/student/pedram-local/nas_benchmarks'
+# Add submodule to path
+path = os.path.join(os.path.dirname(os.getcwd()), 'nc_nas_benchmarks')
 sys.path.append(path)
 
 from tabular_benchmarks import FCNetProteinStructureBenchmark, FCNetSliceLocalizationBenchmark,\
@@ -166,7 +167,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument('--run_id', default=0, type=int, nargs='?', help='unique number to identify this run')
 parser.add_argument('--benchmark', default="protein_structure", type=str, nargs='?', help='specifies the benchmark')
 parser.add_argument('--n_iters', default=100, type=int, nargs='?', help='number of iterations for optimization method')
-parser.add_argument('--output_path', default="./", type=str, nargs='?',
+parser.add_argument('--output_path', default="", type=str, nargs='?',
                     help='specifies the path where the results will be saved')
 parser.add_argument('--data_dir', default="./", type=str, nargs='?', help='specifies the path to the tabular data')
 parser.add_argument('--pop_size', default=100, type=int, nargs='?', help='population size')
@@ -194,7 +195,7 @@ elif args.benchmark == "parkinsons_telemonitoring":
     b = FCNetParkinsonsTelemonitoringBenchmark(data_dir=args.data_dir)
 
 output_path = os.path.join(args.output_path, "regularized_evolution")
-os.makedirs(os.path.join(output_path), exist_ok=True)
+os.makedirs(os.path.join(path, 'experiments', output_path), exist_ok=True)
 
 cs = b.get_configuration_space()
 
@@ -206,6 +207,6 @@ if args.benchmark == "nas_cifar10a" or args.benchmark == "nas_cifar10b":
 else:
     res = b.get_results()
 
-fh = open(os.path.join(output_path, 'run_%d.json' % args.run_id), 'w')
+fh = open(os.path.join(path, 'experiments', output_path, 'run_%d.json' % args.run_id), 'w')
 json.dump(res, fh)
 fh.close()
